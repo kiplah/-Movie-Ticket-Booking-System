@@ -1,0 +1,27 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: auto;
+}
+h1 {
+    color: #333;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+label, input, button {
+    margin: 5px 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+th {
+    background-color: #f4f4f4;
+}

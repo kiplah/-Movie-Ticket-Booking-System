@@ -1,0 +1,31 @@
+<!-- sales.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Ticket Sales Data</h1>
+    <table>
+        <tr>
+            <th>Movie Title</th>
+            <th>Showtime</th>
+            <th>Total Tickets Sold</th>
+        </tr>
+        {% for movie, details in movie_data.items() %}
+        <tr>
+            <td>{{ movie }}</td>
+            <td>{{ details.showtime }}</td>
+            <td>{{ details.tickets_sold }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Tickets Sold per Movie</h2>
+    <img src="{{ url_for('sales_chart') }}" alt="Tickets Sold Chart">
+
+    <a href="{{ url_for('index') }}">Back to Booking</a>
+</body>
+</html>
