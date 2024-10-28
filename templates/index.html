@@ -1,24 +1,36 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Ticket Booking</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Movie Ticket Booking</h1>
-    <form action="{{ url_for('book_ticket') }}" method="POST">
-        <label for="movie_title">Movie Title:</label>
-        <input type="text" name="movie_title" required><br>
-        <label for="showtime">Showtime:</label>
-        <input type="time" name="showtime" required><br>
-        <label for="customer_name">Customer Name:</label>
-        <input type="text" name="customer_name" required><br>
-        <label for="tickets">Number of Tickets:</label>
-        <input type="number" name="tickets" min="1" required><br>
-        <button type="submit">Book Tickets</button>
-    </form>
-    <a href="{{ url_for('view_sales') }}">View Sales</a>
+    <div class="container">
+        <h1>Movie Ticket Booking</h1>
+        <form action="{{ url_for('book_ticket') }}" method="POST">
+            <label for="movie_title">Movie Title:</label>
+            <input type="text" id="movie_title" name="movie_title" required>
+
+            <label for="showtime">Showtime:</label>
+            <select id="showtime" name="showtime" required>
+                <option value="">--Select--</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+                <option value="7:00 PM">7:00 PM</option>
+            </select>
+
+            <label for="customer_name">Customer Name:</label>
+            <input type="text" id="customer_name" name="customer_name" required>
+
+            <label for="num_tickets">Number of Tickets:</label>
+            <input type="text" id="num_tickets" name="num_tickets" required>
+
+            <input type="submit" value="Book Tickets">
+        </form>
+        <a href="{{ url_for('view_sales') }}">View Sales</a>
+    </div>
 </body>
 </html>
