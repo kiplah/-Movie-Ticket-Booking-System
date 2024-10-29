@@ -13,8 +13,12 @@ DATA_FILE = 'data/sales_data.json'
 # Helper functions to load and save data
 def load_data():
     if os.path.exists(DATA_FILE):
-        with open(DATA_FILE, 'r') as file:
-            return json.load(file)
+        try:
+            with open(DATA_FILE, 'r') as file:
+                return json.load(file)
+        except json.JSONDecodeError:
+            # If the file is empty or has invalid JSON, return an empty dictionary
+            return {}
     return {}
 
 def save_data(data):

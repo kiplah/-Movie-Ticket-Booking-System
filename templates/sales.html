@@ -1,31 +1,46 @@
-<!-- sales.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Data</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Ticket Sales Data</h1>
-    <table>
-        <tr>
-            <th>Movie Title</th>
-            <th>Showtime</th>
-            <th>Total Tickets Sold</th>
-        </tr>
-        {% for movie, details in movie_data.items() %}
-        <tr>
-            <td>{{ movie }}</td>
-            <td>{{ details.showtime }}</td>
-            <td>{{ details.tickets_sold }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Sales Data</h2>
+        
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Movie Title</th>
+                    <th>Showtime</th>
+                    <th>Tickets Sold</th>
+                    <th>Total Seats</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie, data in movie_data.items() %}
+                <tr>
+                    <td>{{ movie }}</td>
+                    <td>{{ data['showtime'] }}</td>
+                    <td>{{ data['tickets_sold'] }}</td>
+                    <td>{{ data['total_seats'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <h2>Tickets Sold per Movie</h2>
-    <img src="{{ url_for('sales_chart') }}" alt="Tickets Sold Chart">
+        <div class="text-center mt-5">
+            <h3>Tickets Sold Chart</h3>
+            <img src="{{ url_for('sales_chart') }}" alt="Sales Chart" class="img-fluid mt-3" />
+        </div>
+    </div>
 
-    <a href="{{ url_for('index') }}">Back to Booking</a>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

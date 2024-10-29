@@ -4,33 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Ticket Booking</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Movie Ticket Booking</h1>
-        <form action="{{ url_for('book_ticket') }}" method="POST">
-            <label for="movie_title">Movie Title:</label>
-            <input type="text" id="movie_title" name="movie_title" required>
-
-            <label for="showtime">Showtime:</label>
-            <select id="showtime" name="showtime" required>
-                <option value="">--Select--</option>
-                <option value="10:00 AM">10:00 AM</option>
-                <option value="1:00 PM">1:00 PM</option>
-                <option value="4:00 PM">4:00 PM</option>
-                <option value="7:00 PM">7:00 PM</option>
-            </select>
-
-            <label for="customer_name">Customer Name:</label>
-            <input type="text" id="customer_name" name="customer_name" required>
-
-            <label for="num_tickets">Number of Tickets:</label>
-            <input type="text" id="num_tickets" name="num_tickets" required>
-
-            <input type="submit" value="Book Tickets">
-        </form>
-        <a href="{{ url_for('view_sales') }}">View Sales</a>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Movie Ticket Booking</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <form action="{{ url_for('book_ticket') }}" method="POST">
+                    <div class="form-group">
+                        <label for="movie-title">Movie Title:</label>
+                        <input type="text" class="form-control" id="movie-title" name="movie_title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="showtime">Showtime:</label>
+                        <select class="form-control" id="showtime" name="showtime" required>
+                            <option value="" disabled selected>-- Select a showtime --</option>
+                            <option>10:00 AM</option>
+                            <option>1:00 PM</option>
+                            <option>4:00 PM</option>
+                            <option>7:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-name">Customer Name:</label>
+                        <input type="text" class="form-control" id="customer-name" name="customer_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="num-tickets">Number of Tickets:</label>
+                        <input type="number" class="form-control" id="num-tickets" name="tickets" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Book Tickets</button>
+                </form>
+                <div class="text-center mt-3">
+                    <a href="{{ url_for('view_sales') }}" class="btn btn-info">View Sales</a>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
